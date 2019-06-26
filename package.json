@@ -1,0 +1,23 @@
+{
+  "name": "word-wrap-kata",
+  "version": "1.0.0",
+  "description": "Word Wrap Kata",
+  "main": "./src/index.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "npm test -- --watch"
+  },
+  "author": "SamdeVega",
+  "license": "ISC",
+  "keywords": [
+    "word-wrap-kata",
+    "transformation-priority-premise",
+    "tpp",
+    "test-driven-development",
+    "tdd"
+  ],
+  "dependencies": {
+    "jest": "^24.8.0"
+  },
+  "devDependencies": {}
+}

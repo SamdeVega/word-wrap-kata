@@ -1,6 +1,9 @@
 const Wrapper = () => {
   const wrap = (string, columnNumber) => {
-    return string.substring(0, columnNumber)
+    let wrapped = string.substring(0, columnNumber)
+    if (string.length > columnNumber)
+      wrapped = wrapped.concat("\n").concat(string.substring(columnNumber))
+    return wrapped
   }
 
   return {

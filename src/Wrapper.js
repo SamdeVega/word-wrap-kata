@@ -1,6 +1,6 @@
 const Wrapper = () => {
   const wrap = (string, columnNumber) => {
-    return ""
+    return string.substring(0, columnNumber)
   }
 
   return {

@@ -17,7 +17,7 @@ describe('Wrapper should wrap', () => {
   })
 
   it('a sentence when it does not fit', () => {
-    expect(wrapper.wrap("hello world!", 6)).toBe("hello\nworld!")
+    expect(wrapper.wrap("hello world!", 7)).toBe("hello\nworld!")
   })
 
   it('a word in a sentence when it does not fit', () => {

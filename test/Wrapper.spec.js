@@ -5,6 +5,10 @@ describe('Wrapper should not wrap', () => {
   it('a word when it fits', () => {
     expect(wrapper.wrap("hello", 5)).toBe("hello")
   })
+
+  it('a sentence when it fits', () => {
+    expect(wrapper.wrap("hello world!", 12)).toBe("hello world!")
+  })
 })
 
 describe('Wrapper should wrap', () => {

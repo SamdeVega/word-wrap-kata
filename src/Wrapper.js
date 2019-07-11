@@ -1,14 +1,10 @@
 const Wrapper = () => {
-  const wrap = (string, columnNumber) => {
-    let wrappedLeft = string.substring(0, columnNumber).trim()
-    let wrappedRight = string.substring(columnNumber).trim()
-    if (string.length > columnNumber) {
-      wrappedLeft = wrap(wrappedLeft, columnNumber)
-      wrappedRight = wrap(wrappedRight, columnNumber)
-      wrappedLeft = wrappedLeft.concat("\n").concat(wrappedRight)
-    }
-    return wrappedLeft
-  }
+  const separationIndex = (string, columnNumber) => (string.substring(0, columnNumber).includes(" ")) ? string.substring(0, columnNumber).lastIndexOf(" ") : columnNumber
+  const separate = (string, columnNumber) => [
+    string.substring(0, separationIndex(string, columnNumber)).trim(),
+    string.substring(separationIndex(string, columnNumber)).trim()
+  ].map(string => (string.length > columnNumber) ? wrap(string, columnNumber) : string)
+  const wrap = (string, columnNumber) => (string.length > columnNumber) ? separate(string, columnNumber).join("\n") : string
 
   return {
     wrap: wrap,

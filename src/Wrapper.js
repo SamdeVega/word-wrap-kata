@@ -1,10 +1,25 @@
 const Wrapper = () => {
-  const separationIndex = (string, columnNumber) => (string.substring(0, columnNumber).includes(" ")) ? string.substring(0, columnNumber).lastIndexOf(" ") : columnNumber
-  const separate = (string, columnNumber) => [
-    string.substring(0, separationIndex(string, columnNumber)).trim(),
-    string.substring(separationIndex(string, columnNumber)).trim()
-  ].map(string => (string.length > columnNumber) ? wrap(string, columnNumber) : string)
-  const wrap = (string, columnNumber) => (string.length > columnNumber) ? separate(string, columnNumber).join("\n") : string
+  const wrapIndex = (text, columnWidth) => {
+    const hasSpaceInsideColumnWidth = text.substring(0, columnWidth).includes(" ")
+    const spaceIndex = text.substring(0, columnWidth).lastIndexOf(" ")
+
+    return hasSpaceInsideColumnWidth ? spaceIndex : columnWidth
+  }
+
+  const wrap = (text, columnWidth) => {
+    const hasValidColumnWidth = columnWidth > 0
+    const hasValidText =  text && text.length > columnWidth
+
+    if (hasValidColumnWidth && hasValidText) {
+      const line = text.substring(0, wrapIndex(text, columnWidth)).trim()
+      const unwrappedText = text.substring(wrapIndex(text, columnWidth)).trim()
+      const remainderLines = wrap(unwrappedText, columnWidth)
+
+      return [line, remainderLines].join("\n")
+    }
+
+    return text
+  }
 
   return {
     wrap: wrap,
